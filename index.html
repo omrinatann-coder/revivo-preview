@@ -366,6 +366,28 @@ footer{background:#050506;border-top:1px solid rgba(200,162,90,.25)}
 @media (max-width:1024px){.hero-shade{background:linear-gradient(0deg,rgba(5,5,6,.95) 10%,rgba(5,5,6,.7) 55%,rgba(5,5,6,.45))!important}}
 @media (max-width:640px){.about-visual{box-shadow:14px 14px 0 -1px var(--ink),14px 14px 0 0 var(--gold)}.hero{padding-top:110px}}
 @media (prefers-reduced-motion:reduce){.hero-card img.hero-photo{animation:none}}
+
+/* articles */
+#articles{background:#0a0a0b;color:#fff;position:relative}
+#articles h2{color:#fff}#articles .lead{color:rgba(255,255,255,.6)}
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.art{background:linear-gradient(180deg,#141416,#0e0e10);border:1px solid rgba(200,162,90,.18);padding:2.2rem 2rem 1.8rem;display:flex;flex-direction:column;cursor:pointer;transition:.4s;position:relative;text-align:right;font:inherit;color:inherit}
+.art::after{content:"";position:absolute;top:0;right:0;width:0;height:2px;background:linear-gradient(90deg,var(--gold-2),var(--gold));transition:.5s}
+.art:hover{transform:translateY(-5px);border-color:rgba(200,162,90,.55)}.art:hover::after{width:100%}
+.art .cat{font-size:.72rem;letter-spacing:.24em;color:var(--gold);margin-bottom:1rem}
+.art h3{color:#fff;font-size:1.35rem;line-height:1.35;margin-bottom:.8rem}
+.art p{color:rgba(255,255,255,.55);font-size:.92rem;flex:1}
+.art .meta{display:flex;justify-content:space-between;align-items:center;margin-top:1.6rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.08);font-size:.8rem;color:rgba(255,255,255,.45)}
+.art .meta b{color:var(--gold-2);font-weight:500}
+.art-body h4{font-family:var(--serif);color:var(--ink);font-size:1.15rem;margin:1.5rem 0 .5rem}
+.art-body p{margin-bottom:.9rem;color:#2b2b2b}
+.art-body ul{list-style:none;display:grid;gap:.45rem;margin-bottom:1rem}
+.art-body li::before{content:"◆";color:var(--gold);font-size:.55rem;margin-left:.6rem;vertical-align:middle}
+.art-cta{margin-top:1.6rem;padding:1.3rem;background:var(--ivory);border-right:3px solid var(--gold);display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between}
+.art-cta span{font-family:var(--serif);font-size:1.05rem;color:var(--ink)}
+.art-disc{font-size:.75rem;color:var(--muted);margin-top:1rem}
+@media (max-width:1024px){.art-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.art-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -388,6 +410,7 @@ footer{background:#050506;border-top:1px solid rgba(200,162,90,.25)}
         <li><a href="#about">המשרד</a></li>
         <li><a href="#team">הצוות</a></li>
         <li><a href="#process">תהליך</a></li>
+        <li><a href="#articles">מאמרים</a></li>
         <li><a href="#contact">צור קשר</a></li>
       </ul>
     </nav>
@@ -481,6 +504,18 @@ footer{background:#050506;border-top:1px solid rgba(200,162,90,.25)}
       <div class="step rv"><div class="dot">3</div><h3>אסטרטגיה</h3><p>בניית תוכנית פעולה מותאמת למקסום התוצאה.</p></div>
       <div class="step rv"><div class="dot">4</div><h3>ייצוג</h3><p>ייצוג וליווי מלא עד לסיום מוצלח של ההליך.</p></div>
     </div>
+  </div>
+</section>
+
+
+<!-- ARTICLES -->
+<section id="articles">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><span class="eyebrow">מאמרים ומדריכים</span><h2>ידע משפטי<br>שכדאי להכיר</h2></div>
+      <p class="lead">מדריכים קצרים מאת צוות המשרד, שיעזרו לכם להבין את זכויותיכם ולקבל החלטות נכונות – לפני שפונים לעורך דין.</p>
+    </div>
+    <div class="art-grid" id="artGrid"></div>
   </div>
 </section>
 
@@ -698,6 +733,43 @@ aiBtn.onclick=()=>{const o=chat.classList.toggle('open');aiBtn.setAttribute('ari
 document.getElementById('chatX').onclick=()=>{chat.classList.remove('open');aiBtn.setAttribute('aria-expanded',false)};
 document.getElementById('chatF').onsubmit=e=>{e.preventDefault();const t=inp.value.trim();if(!t)return;inp.value='';user(t)};
 setTimeout(()=>{if(!started&&!chat.classList.contains('open')){aiBtn.animate([{transform:'scale(1)'},{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:700,iterations:3})}},6000);
+
+
+/* ===== articles ===== */
+const ARTS=[
+ {c:'חדלות פירעון',t:'חובות שהצטברו? כך עובד הליך שיקום כלכלי בישראל',x:'חוק חדלות פירעון ושיקום כלכלי מאפשר לאדם שאינו מסוגל לפרוע את חובותיו לעצור את מרוץ הגבייה ולהתחיל מחדש. מה כולל ההליך ומתי כדאי לפנות?',m:5,
+  b:`<p>מצב שבו החובות גדלים מהר יותר מהיכולת לשלם אותם מוכר לרבים. חוק חדלות פירעון ושיקום כלכלי, התשע״ח-2018, שנכנס לתוקף ב-2019, שם דגש על <b>שיקום</b> – ולא רק על גביית החוב – ומאפשר לחייב שעומד בתנאים לקבל "הפטר" ולפתוח דף חדש.</p>
+  <h4>איך מתחיל ההליך?</h4><p>מגישים בקשה לפתיחת הליכים – לממונה על הליכי חדלות פירעון או לבית המשפט, בהתאם לגובה החובות ולנסיבות. עם מתן צו לפתיחת הליכים, ההליכים נגד החייב בהוצאה לפועל מעוכבים, והגבייה עוברת למסלול מסודר אחד.</p>
+  <h4>מה קורה בהמשך?</h4><ul><li>בדיקה מקיפה של מצבו הכלכלי של החייב, הכנסותיו והוצאותיו</li><li>קביעת צו תשלומים חודשי בהתאם ליכולת</li><li>גיבוש תוכנית פירעון שבסופה ניתן הפטר מיתרת החובות</li></ul>
+  <h4>טעויות נפוצות</h4><p>המתנה עד שהמצב מחמיר, העברת נכסים לבני משפחה לפני ההליך, או הסתרת הכנסות – כל אלה עלולים לפגוע בסיכוי לקבל הפטר. ליווי משפטי מוקדם מאפשר לבנות את הבקשה נכון מההתחלה.</p>`},
+ {c:'נדל״ן',t:'רוכשים דירה? 6 בדיקות שחובה לעשות לפני החתימה',x:'רכישת דירה היא העסקה הגדולה בחייהם של רוב האנשים. בדיקה משפטית יסודית לפני החתימה חוסכת הפתעות, סכסוכים והפסדים כספיים.',m:4,
+  b:`<p>חוזה לרכישת דירה נחתם פעם אחת – אבל ההשלכות שלו מלוות אתכם שנים. לפני שמעבירים מקדמה, כדאי לוודא שהבדיקות הבאות בוצעו:</p>
+  <ul><li><b>נסח טאבו</b> – מי הבעלים הרשום, והאם קיימים משכנתאות, עיקולים או הערות אזהרה</li><li><b>התאמה למצב בפועל</b> – שטח, הצמדות (חניה, מחסן) ותוספות בנייה</li><li><b>היתרי בנייה וחריגות</b> – בדיקה מול הוועדה המקומית לתכנון ובנייה</li><li><b>חובות לרשויות</b> – ארנונה, היטל השבחה ומס שבח</li><li><b>מנגנון תשלום מוגן</b> – העברת כספים בשלבים, כנגד בטוחות</li><li><b>רישום הערת אזהרה</b> לטובת הקונה מיד לאחר החתימה</li></ul>
+  <h4>רכישה מקבלן</h4><p>ברכישה על הנייר יש להקפיד על קבלת ערבויות לפי חוק המכר (דירות), על מפרט טכני מפורט ועל מועד מסירה ברור עם פיצוי על איחור.</p>`},
+ {c:'דיני משפחה',t:'הסכם ממון: למה הוא חשוב, ומתי צריך לאשר אותו?',x:'הסכם ממון אינו מעיד על חוסר אמון – הוא כלי שמגן על שני בני הזוג ומונע סכסוכים קשים בעתיד. כך עושים אותו נכון.',m:4,
+  b:`<p>חוק יחסי ממון בין בני זוג קובע הסדר ברירת מחדל לחלוקת הרכוש בעת פרידה. הסכם ממון מאפשר לבני הזוג לקבוע הסדר אחר, המותאם לנסיבות שלהם – למשל כשאחד מהם מביא לנישואין דירה, עסק או ירושה צפויה.</p>
+  <h4>מתי ההסכם תקף?</h4><ul><li><b>לפני הנישואין</b> – באישור נוטריון או רושם נישואין</li><li><b>לאחר הנישואין</b> – באישור בית המשפט לענייני משפחה או בית הדין הרבני</li></ul>
+  <h4>גם לידועים בציבור</h4><p>בני זוג שאינם נשואים יכולים, ולעיתים אף כדאי להם, לערוך הסכם חיים משותפים המסדיר את זכויותיהם ברכוש.</p>
+  <p>הסכם מנוסח היטב צריך להיות ברור, הוגן ומעודכן – ולהביא בחשבון שינויים כמו הולדת ילדים או רכישת נכסים.</p>`},
+ {c:'פלילי',t:'זומנתם לחקירה במשטרה? מה חשוב לדעת לפני שנכנסים',x:'הדקות שלפני חקירה הן לעיתים המכריעות ביותר בתיק. אלה הזכויות שלכם – ומה כדאי לעשות כבר עכשיו.',m:3,
+  b:`<p>זימון לחקירה – גם כ"עד" וגם כחשוד – מעורר לחץ טבעי. הצעד החשוב ביותר הוא להתייעץ עם עורך דין <b>לפני</b> החקירה, ולא אחריה.</p>
+  <h4>הזכויות שלכם</h4><ul><li>הזכות להיוועץ בעורך דין</li><li>הזכות לשמור על שתיקה – אם כי יש לדעת ששתיקה עשויה לשמש כחיזוק לראיות בהמשך, ולכן ההחלטה צריכה להתקבל בהתייעצות</li><li>הזכות לדעת באיזה חשד מדובר</li><li>הזכות לקרוא את ההודעה לפני החתימה עליה, ולבקש תיקונים</li></ul>
+  <h4>מה לא לעשות</h4><p>לא לנסות "להסביר" לחוקרים ללא הכנה, לא לחתום על מסמך שלא הובן, ולא לשוחח על החקירה עם מעורבים אחרים.</p>
+  <p>בצוות המשרד פועל עורך דין שכיהן כתובע פלילי במשטרת ישראל ומכיר היטב את דרך החשיבה של צד התביעה.</p>`},
+ {c:'נזיקין',t:'נפגעתם בתאונת דרכים? הצעדים הראשונים למימוש הפיצוי',x:'בתאונת דרכים עם נפגעים, החוק מאפשר פיצוי גם ללא הוכחת אשמה. אבל טעויות בשלבים הראשונים עלולות לעלות ביוקר.',m:4,
+  b:`<p>חוק פיצויים לנפגעי תאונות דרכים (פלת״ד) קובע אחריות מוחלטת: נפגע זכאי לפיצוי מחברת הביטוח של הרכב, בדרך כלל בלי צורך להוכיח מי אשם בתאונה.</p>
+  <h4>מה לעשות מיד</h4><ul><li>לקבל טיפול רפואי ולתעד כל ביקור, בדיקה ותלונה</li><li>לשמור קבלות על הוצאות רפואיות ונסיעות</li><li>לאסוף פרטי רכבים, ביטוחים ועדים</li><li>אם התאונה אירעה בדרך לעבודה או ממנה – לבדוק זכאות גם מול הביטוח הלאומי</li></ul>
+  <h4>זהירות עם חברת הביטוח</h4><p>אין לחתום על כתב ויתור או לקבל הצעת פשרה לפני שנבדק היקף הנזק המלא – כולל נכות רפואית, אובדן השתכרות ועזרת צד ג׳. תביעות נזיקין כפופות לתקופות התיישנות, ולכן כדאי לא להמתין.</p>`},
+ {c:'דיני עבודה',t:'פוטרתם? הזכויות שהמעסיק חייב לכבד',x:'פיטורים הם רגע קשה, אבל החוק מעניק לעובד הגנות ברורות. מהו שימוע, מתי מגיעים פיצויי פיטורים, ומה לבדוק בתלוש האחרון.',m:4,
+  b:`<p>מעסיק רשאי לפטר עובד, אך עליו לעשות זאת כדין ובתום לב. הפרה של הכללים עשויה לזכות את העובד בפיצוי.</p>
+  <h4>הזכויות העיקריות</h4><ul><li><b>שימוע</b> – הזדמנות אמיתית להשמיע טענות לפני ההחלטה הסופית</li><li><b>הודעה מוקדמת</b> – לפי ותק העובד, כקבוע בחוק</li><li><b>פיצויי פיטורים</b> – לעובד שעבד שנה לפחות, ככלל משכורת חודשית לכל שנת עבודה</li><li><b>גמר חשבון</b> – פדיון ימי חופשה, דמי הבראה ושחרור כספי הפנסיה</li></ul>
+  <h4>מצבים מיוחדים</h4><p>פיטורי עובדת בהיריון, עובד במילואים או עובד בחופשת מחלה מוגבלים בחוק ולעיתים מחייבים היתר. אם אתם חושדים שהפיטורים אינם כדין – כדאי לבדוק זאת מוקדם, לפני חתימה על מסמכי סיום.</p>`}
+];
+const ag2=document.getElementById('artGrid');
+ARTS.forEach((a,i)=>ag2.insertAdjacentHTML('beforeend',`<button type="button" class="art rv" data-a="${i}"><span class="cat">${a.c}</span><h3>${a.t}</h3><p>${a.x}</p><span class="meta"><span>${a.m} דק׳ קריאה</span><b>לקריאה ‹</b></span></button>`));
+ag2.addEventListener('click',e=>{const b=e.target.closest('.art');if(!b)return;const a=ARTS[b.dataset.a];
+ mbox.innerHTML=`<button class="x" aria-label="סגירה">×</button><div class="modal-head"><div><span class="role">${a.c} · ${a.m} דק׳ קריאה</span><h3>${a.t}</h3></div></div><div class="modal-body art-body">${a.b}<div class="art-cta"><span>רוצים לבדוק את המקרה שלכם?</span><a class="btn btn-gold" style="padding:.7rem 1.3rem" href="${wa('שלום עו״ד רביבו, קראתי באתר את המאמר: '+a.t+' – אשמח לייעוץ')}" target="_blank" rel="noopener">שיחה עם עו״ד רביבו</a></div><p class="art-disc">המידע במאמר הוא כללי בלבד ואינו מהווה ייעוץ משפטי או תחליף לו.</p></div>`;
+ modal.classList.add('open');mbox.scrollTop=0;mbox.querySelector('.x').onclick=closeM;mbox.querySelector('.x').focus()});
 
 /* header + menu */
 const hdr=document.getElementById('hdr'), menu=document.getElementById('menu'), burger=document.getElementById('burger');
